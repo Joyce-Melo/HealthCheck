@@ -19,6 +19,12 @@ export const create = async (req: FastifyRequest, reply: FastifyReply) => {
             reply.status(400).send({ message: "Submit all fields for registration"})
         }
 
+        const existingUser = await knex("user").where({ email }).first();
+        if (existingUser) {
+        reply.status(403).send({ message: "Unable to create an account because user already exists" });
+        return;
+        }
+
         await knex ("user").insert({
             username,
             email,
@@ -27,10 +33,11 @@ export const create = async (req: FastifyRequest, reply: FastifyReply) => {
 
         return reply.status(201).send( { username, email })
 
-    } catch (error: any) {
-        reply.status(500).send({ messaage: error.messaage });
-    }
-    
+    } catch (error) {
+        let message = 'Unknown Error'
+        if (error instanceof Error) message = error.message
+        reportError({message})  
+    }   
 }
 
 export default { create }
