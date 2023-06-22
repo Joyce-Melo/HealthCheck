@@ -1,6 +1,6 @@
 REGRAS DA APLICAÇÃO
-    - Deve ser possível criar um usuário (usuário = id, username, email, password, created_at, updated_at)
-    - Deve ser possível identificar o usuário entre as requisições
+    - Deve ser possível criar um usuário (usuário = id, username, email, password, created_at, updated_at) - OK
+    - Deve ser possível identificar o usuário entre as requisições - Ok
     - Deve ser possível registrar uma refeição feita, com as seguintes informações (As refeições devem ser relacionadas a um usuário):
         # Nome
         # Descrição

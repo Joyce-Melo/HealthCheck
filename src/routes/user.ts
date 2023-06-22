@@ -4,13 +4,7 @@ import  userController  from '../controllers/userController'
 
 export async function userRoutes(app: FastifyInstance){
     
-    app.get('/users', async () => {
-        const user = await knex('sqlite_schema')
-        .select('*')
-
-        return user
-
-    })
+    app.get('/user/:id', userController.getUserById)
 
     app.post('/user', userController.create)
 }
