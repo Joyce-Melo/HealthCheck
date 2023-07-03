@@ -14,7 +14,7 @@ export async function up(knex: Knex): Promise<void> {
         table.text('description')
         table.dateTime('created_at').defaultTo(knex.fn.now()).notNullable()
         table.dateTime('updated_at').defaultTo(knex.fn.now())
-        table.boolean('diet_check').defaultTo(true).notNullable()
+        table.boolean('diet_check').defaultTo(true)
         table.uuid('user_id')
              .references('user.id')
              .notNullable()
