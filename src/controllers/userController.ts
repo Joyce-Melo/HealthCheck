@@ -3,6 +3,20 @@ import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod"
 
 
+export const getAllUsers = async (req: FastifyRequest, reply: FastifyReply) => {
+
+    try{
+    const user = await knex ("user");
+
+    return reply.status(201).send ({ user })
+
+    } catch (error) {
+        let message = 'Unknown Error'
+        if (error instanceof Error) message = error.message
+        reportError({message})  
+}
+}
+
 export const create = async (req: FastifyRequest, reply: FastifyReply) => {
 
     try{
@@ -68,6 +82,6 @@ export const getUserById = async (req: FastifyRequest, reply: FastifyReply) => {
     }   
 }
 
-export default { create, getUserById }
+export default { create, getUserById, getAllUsers }
 
 

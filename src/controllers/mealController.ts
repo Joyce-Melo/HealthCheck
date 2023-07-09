@@ -2,6 +2,14 @@ import { knex } from '../database'
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod"
 
+// Deve ser possível editar uma refeição, podendo alterar todos os dados acima
+//     - Deve ser possível apagar uma refeição
+//     - Deve ser possível listar todas as refeiç~ies de um usuário
+//     - Deve ser possível visualizar uma única refeição
+//     - Deve ser possível recuperar as métricas de um usuário
+
+
+
 const createMeal = async (req: FastifyRequest, reply:FastifyReply) => {
 
     try{
@@ -68,5 +76,7 @@ const getMealById = async (req: FastifyRequest, reply: FastifyReply) => {
         return({message})
     }
 }
+
+
 
 export default { createMeal, getMealById }
