@@ -19,6 +19,7 @@ export async function up(knex: Knex): Promise<void> {
              .references('user.id')
              .notNullable()
              .onDelete('CASCADE')
+             
 
     }))
 }

@@ -2,6 +2,11 @@ import { knex } from '../database'
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod"
 
+// - Deve ser possível recuperar as métricas de um usuário
+//         # Quantidade total de refeições registradas
+//         # Quantidade total de refeições dentro da dieta
+//         # Quantidade total de refeições fora da dieta
+//         # Melhor sequência por dia de refeições dentro da dieta
 
 export const getAllUsers = async (req: FastifyRequest, reply: FastifyReply) => {
 
@@ -81,6 +86,8 @@ export const getUserById = async (req: FastifyRequest, reply: FastifyReply) => {
         reportError({message})  
     }   
 }
+
+
 
 export default { create, getUserById, getAllUsers }
 
